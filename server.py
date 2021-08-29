@@ -9,7 +9,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         self.send_response(HTTPStatus.OK)
         self.end_headers()
-        msg = 'Hello! you requested %s' % (self.path)
+        if self.path == '/QR':
+            msg = '<img src="/img/QRhoge.png"></img>'
+        else:
+            msg = 'Hello! you requested %s' % (self.path)
         self.wfile.write(msg.encode())
 
 
