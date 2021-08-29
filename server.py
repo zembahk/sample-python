@@ -11,9 +11,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
         if self.path == '/QR':
             msg = <img src="/img/QRhoge.png"></img>
+            self.wfile.write(msg)
+
         else:
             msg = 'Hello! you requested %s' % (self.path)
-        self.wfile.write(msg.encode())
+            self.wfile.write(msg.encode())
 
 
 port = int(os.getenv('PORT', 80))
