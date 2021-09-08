@@ -11,7 +11,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.send_response(HTTPStatus.OK)
         self.end_headers()
         if self.path.lower() == '/img':
-            self.path = '/img/index.html'
+            self.path = './img/index.html'
             return http.server.SimpleHTTPRequestHandler.do_GET(self)
         else:
             msg = 'Hello! you requested %s' % (self.path)
