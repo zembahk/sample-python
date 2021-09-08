@@ -5,15 +5,14 @@ import requests
 from http import HTTPStatus
 
 
+
 class Handler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         self.send_response(HTTPStatus.OK)
         self.end_headers()
         if self.path.lower() == '/img':
-            # msg = '<img src="/img/QRhoge.png"></img>'
-            url = 'http://google.com/favicon.ico'
-            r = requests.get(url, allow_redirects=True)
-            open('google.ico', 'wb').write(r.content)
+            self.path = '/img/index.html'
+            return http.server.SimpleHTTPRequestHandler.do_GET(self)
         else:
             msg = 'Hello! you requested %s' % (self.path)
         self.wfile.write(msg.encode())
