@@ -8,8 +8,6 @@ from http import HTTPStatus
 
 class Handler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
-        self.send_response(HTTPStatus.OK)
-        self.end_headers()
         if self.path.lower() == '/img':
             self.path = '/index.html'
             return http.server.SimpleHTTPRequestHandler.do_GET(self)
